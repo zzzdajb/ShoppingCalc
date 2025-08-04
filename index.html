@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物清单计算器</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>购物清单计算器</h1>
+            <p>智能价格区间计算，让购物预算更清晰</p>
+        </header>
+
+        <main>
+            <div id="notification" class="notification"></div>
+            
+            <section class="add-item-section">
+                <h2>添加商品</h2>
+                <form id="add-item-form" class="add-item-form">
+                    <div class="form-group">
+                        <label for="item-name">商品名称</label>
+                        <input type="text" id="item-name" name="itemName" placeholder="请输入商品名称" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="item-note">商品注释 <span class="optional-label">(可选)</span></label>
+                        <textarea id="item-note" name="itemNote" placeholder="添加商品说明、规格、备注等信息..." rows="2"></textarea>
+                    </div>
+                    
+                    <div class="price-mode-section">
+                        <label class="section-label">价格设置</label>
+                        <div class="price-mode-toggle">
+                            <button type="button" id="fixed-price-btn" class="mode-btn active">固定价格</button>
+                            <button type="button" id="range-price-btn" class="mode-btn">价格区间</button>
+                        </div>
+                        
+                        <div id="fixed-price-group" class="price-input-group active">
+                            <div class="form-group">
+                                <label for="fixed-price">价格 (¥)</label>
+                                <input type="number" id="fixed-price" name="fixedPrice" step="0.01" min="0" placeholder="0.00" required>
+                            </div>
+                        </div>
+                        
+                        <div id="range-price-group" class="price-input-group">
+                            <div class="price-group">
+                                <div class="form-group">
+                                    <label for="min-price">最低价格 (¥)</label>
+                                    <input type="number" id="min-price" name="minPrice" step="0.01" min="0" placeholder="0.00">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="max-price">最高价格 (¥)</label>
+                                    <input type="number" id="max-price" name="maxPrice" step="0.01" min="0" placeholder="0.00">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="add-btn">添加商品</button>
+                </form>
+            </section>
+
+            <section class="shopping-list-section">
+                <div class="section-header">
+                    <h2>购物清单</h2>
+                    <div class="header-actions">
+                        <div class="total-price">
+                            <span class="total-label">预计总价：</span>
+                            <span id="total-price-display" class="total-amount">¥0.00 - ¥0.00</span>
+                        </div>
+                        <div class="list-actions">
+                            <button type="button" id="export-btn" class="action-btn secondary">导出数据</button>
+                            <button type="button" id="clear-all-btn" class="action-btn danger">清空列表</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="shopping-list" class="shopping-list">
+                    <div class="empty-state">
+                        <p>购物清单为空，快添加你的第一个商品吧！</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
